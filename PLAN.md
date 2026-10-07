@@ -5,7 +5,7 @@ This file tracks delivery phase by phase. Work proceeds in small reviewable step
 ## Scope decisions for the kickoff
 
 - Use `tetlesTECHv1.md` as the vsss1 implementation guide: strict TypeScript, a framework-independent core, customer-side verification, and Next.js + Supabase as the first integration.
-- Rust/WASM is deferred for v1, as specified by the Technical PRD. The product PRD has been aligned to this scope.
+- Rust/WASM is deferred for v1, as specified by the Technical PRD. The product PRD has been aligned to this scope.dddd
 - The product PRD lists more framework adapters in P0 than the technical PRD's build order. Start with Next.js/Supabase, then add adapters in the technical PRD's order while preserving the others as follow-on scope.
 - Use the stricter product targets when practical: p99 under 1 ms in-process, under 10 KB gzipped client bundle, under 10 minutes to first protected request, and zero database calls on the steady-state verification path. Measure before claiming success.
 
