@@ -1,0 +1,32 @@
+{
+  "name": "@tether/next",
+  "version": "0.1.0",
+  "type": "module",
+  "files": ["src", "dist"],
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@tether/core": "workspace:*",
+    "jose": "^6.2.12"
+  },
+  "peerDependencies": {
+    "next": "^15.0.0 || ^16.0.0"
+  },
+  "peerDependenciesMeta": {
+    "next": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "vitest": "^5.0.3"
+  }
+}

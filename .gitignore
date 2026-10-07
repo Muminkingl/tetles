@@ -1,0 +1,20 @@
+# Credentials and local configuration
+.env*
+!.env.example
+
+# Dependencies and generated output
+node_modules/
+.pnpm-store/
+dist/
+coverage/
+.vitest/
+.next/
+*.tsbuildinfo
+playwright-report/
+test-results/
+/apps/example/.tether/
+.vercel/
+
+# Local tooling
+.DS_Store
+Thumbs.db

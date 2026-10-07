@@ -1,0 +1,18 @@
+{
+  "name": "tether",
+  "private": true,
+  "packageManager": "pnpm@11.25.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "typecheck": "pnpm --recursive --if-present typecheck",
+    "build": "pnpm --filter @tether/core build && pnpm --filter @tether/client build && pnpm --filter @tether/next build && pnpm --filter tether-supabase-next-example build",
+    "benchmark:verify": "pnpm --filter @tether/core build && pnpm --filter @tether/core benchmark",
+    "test": "pnpm --filter @tether/core build && pnpm --recursive --if-present test",
+    "license:keygen": "node ./scripts/generate-license-signing-key.mjs"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  }
+}
