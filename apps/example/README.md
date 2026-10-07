@@ -98,7 +98,8 @@ private JWK stays in the ignored root `.env`, while the generated public JWKS is
 SDK. Copy the one-time API key into the server-only `TETHER_KEY` setting and set
 `TETHER_PROJECT_ID` to the project UUID. The default issuer for
 local development is `http://localhost:3000`; deployments must set `TETHER_LICENSE_ISSUER` to the
-stable HTTPS origin that the SDK will verify. For a deployment, copy both signing variables from
+stable HTTPS origin that the SDK will verify (scheme and host only, with no path or trailing slash).
+For a deployment, copy both signing variables from
 the local `.env` into the hosting provider's server-only secret settings; never use `NEXT_PUBLIC_`
 names or commit the private JWK. On another checkout, restore the matching private key from your
 secret manager; the key generator refuses to replace a checked-in public key.
@@ -131,6 +132,13 @@ deployed yet. After the deployment is reachable, switch the build command back t
 `onUnlicensed: "closed"`, so protected routes return a license error until a valid license is
 available; the bootstrap build does not silently open protected routes. Keep the normal snapshot
 build for subsequent deployments.
+
+This repository is a pnpm monorepo: set Vercel's Root Directory to `apps/example` and ensure
+source files outside that directory are included in the build, because the app imports the local
+workspace packages from `packages/`. Keep Production and Preview settings separate: Production
+uses `TETHER_ENV=production` with a `tk_live_` key; Preview uses `TETHER_ENV=development` with a
+`tk_test_` key. The root `.vercelignore` excludes local `.env` files and `.tether` snapshots from
+deployment uploads.
 
 In production, `NODE_ENV=production` selects production unless `TETHER_ENV` explicitly selects
 another environment. A production key must use the `tk_live_` prefix; development uses `tk_test_`.
