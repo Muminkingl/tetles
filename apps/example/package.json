@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm --filter @tether/core build && pnpm --filter @tether/client build && pnpm --filter @tether/next build && dotenv -e ../../.env -- next dev",
-    "build": "node ./scripts/build-with-license-snapshot.mjs --build",
+    "build": "pnpm --filter @tether/core build && pnpm --filter @tether/client build && pnpm --filter @tether/next build && node ./scripts/build-with-license-snapshot.mjs --build",
     "build:bootstrap": "pnpm --filter @tether/core build && pnpm --filter @tether/client build && pnpm --filter @tether/next build && next build",
     "start": "dotenv -e ../../.env -- next start",
     "license:pull": "node ./scripts/build-with-license-snapshot.mjs --pull-only",
